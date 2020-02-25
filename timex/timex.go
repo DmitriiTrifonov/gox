@@ -11,6 +11,8 @@ import (
 // years, months, days, hours, minutes and seconds.
 //
 // For details, see https://stackoverflow.com/a/36531443/1705598
+// This version forked from https://github.com/icza/gox 
+// It returns full months between timestamps
 func Diff(a, b time.Time) (year, month, day, hour, min, sec int) {
 	if a.Location() != b.Location() {
 		b = b.In(a.Location())
@@ -53,9 +55,9 @@ func Diff(a, b time.Time) (year, month, day, hour, min, sec int) {
 	if month < 0 {
 		month += 12
 		year--
-		month += 12 * year
 	}
-
+	month += 12 * year
+	
 	return
 }
 
